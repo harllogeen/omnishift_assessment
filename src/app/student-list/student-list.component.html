@@ -1,14 +1,13 @@
-<div class="bg-[#f6f6f6]  p-20" #studentResultContainer >
-    <p class="font-bold text-[40px] text-[#343434]">
-        {{title}}
-    </p>
-    <div class=" mt-10 bg-white rounded-lg shadow-md px-8 py-10">
-        <p class="font-lato text-gray-500 text-[30px]">Filter Student Table By:</p>
-        <form [formGroup]="form" (ngSubmit)="applyFilter()" class="pt-[5rem] px-4">
+<div class="bg-[#f6f6f6] p-5 sm:p-10 lg:p-20" #studentResultContainer>
+    <p class="font-bold text-2xl sm:text-3xl md:text-4xl text-[#343434]">{{ title }}</p>
+
+    <div class="mt-10 bg-white rounded-lg shadow-md px-8 py-10">
+        <p class="font-lato text-gray-500 text-xl sm:text-2xl">Filter Student Table By:</p>
+        <form [formGroup]="form" (ngSubmit)="applyFilter()" class="pt-5 px-4">
             <div class="flex flex-wrap gap-6 justify-between items-end">
 
                 <!-- Age Select -->
-                <div class="relative flex-1 min-w-[250px]">
+                <div class="relative flex-1 min-w-[250px] w-full sm:w-[250px]">
                     <label for="age"
                         class="absolute -top-2 left-3 bg-white px-1 text-gray-500 text-sm transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-blue-500">
                         Age
@@ -21,7 +20,7 @@
                 </div>
 
                 <!-- State Select -->
-                <div class="relative flex-1 min-w-[250px]">
+                <div class="relative flex-1 min-w-[250px] w-full sm:w-[250px]">
                     <label for="state"
                         class="absolute -top-2 left-3 bg-white px-1 text-gray-500 text-sm transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-blue-500">
                         State
@@ -34,7 +33,7 @@
                 </div>
 
                 <!-- Level Select -->
-                <div class="relative flex-1 min-w-[250px]">
+                <div class="relative flex-1 min-w-[250px] w-full sm:w-[250px]">
                     <label for="level"
                         class="absolute -top-2 left-3 bg-white px-1 text-gray-500 text-sm transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-blue-500">
                         Level
@@ -47,7 +46,7 @@
                 </div>
 
                 <!-- Gender Select -->
-                <div class="relative flex-1 min-w-[250px]">
+                <div class="relative flex-1 min-w-[250px] w-full sm:w-[250px]">
                     <label for="gender"
                         class="absolute -top-2 left-3 bg-white px-1 text-gray-500 text-sm transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-blue-500">
                         Gender
@@ -60,7 +59,7 @@
                 </div>
 
                 <!-- Filter Button -->
-                <div class="flex-1 min-w-[250px]">
+                <div class="flex-1 min-w-[250px] w-full sm:w-[250px]">
                     <button type="submit"
                         class="w-full h-14 bg-[#46c35f] text-white rounded-md transition duration-200 flex items-center justify-center">
                         Search
@@ -70,8 +69,8 @@
         </form>
     </div>
 
-    <div class="bg-white mt-[5rem] p-6 shadow-lg rounded-lg">
-        <div class="scrollable-table overflow-y-auto max-h-[500px]">
+    <div class="bg-white mt-10 sm:mt-[5rem] p-6 shadow-lg rounded-lg">
+        <div class="scrollable-table overflow-x-auto max-h-[500px]">
             <table *ngIf="filteredData.length > 0; else noData"
                 class="min-w-full table-auto bg-white border-separate border-spacing-0">
                 <thead>
@@ -97,8 +96,6 @@
                         <td class="px-6 py-4 text-center text-gray-700 border-b">{{ student.level }}</td>
                         <td class="px-6 py-4 text-center text-gray-700 border-b">{{ student.state }}</td>
                         <td class="px-6 py-4 text-center border-b">
-                            <!-- <button (click)="selectStudent(student)">Select</button> -->
-
                             <button
                                 class="px-6 py-4 bg-[#46c35f] text-white hover:bg-green-600 transition duration-200 ease-in-out"
                                 (click)="downloadStudentResult(student)">
@@ -113,10 +110,6 @@
             <ng-template #noData>
                 <p class="text-center text-gray-500 mt-4">No student data available</p>
             </ng-template>
-            <!-- <app-student-result *ngIf="selectedStudent" [student]="selectedStudent"></app-student-result> -->
-
-
         </div>
     </div>
-
 </div>
