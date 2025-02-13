@@ -1,0 +1,56 @@
+/* Custom scrollbar styles */
+.scrollable-table::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+}
+
+.scrollable-table::-webkit-scrollbar-thumb {
+  background-color: #46c35f; /* Green color */
+  border-radius: 9999px; /* Rounded corners */
+}
+
+.scrollable-table::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Light grey track */
+  border-radius: 9999px;
+}
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.filter-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+mat-form-field {
+  width: 200px;
+}
+
+mat-table {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #ccc;
+}
+
+.mat-header-cell {
+  font-weight: bold;
+  text-align: center;
+}
+
+.mat-cell {
+  text-align: center;
+}
+
+button {
+  margin-right: 5px;
+}

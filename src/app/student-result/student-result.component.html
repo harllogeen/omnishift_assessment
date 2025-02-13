@@ -1,0 +1,102 @@
+<div>
+    <div class=" items-center my-5" #studentResult>
+        <div class="p-10 border bg-white">
+            <div class="flex items-center justify-between gap-10 space-x-4">
+                <div *ngIf="logoUrl">
+                    <img [src]="logoUrl" alt="Student Result Logo" class="w-32 h-32" />
+                </div>
+                <div class="text-center">
+                    <p class="font-lato text-base font-bold text-[#4F4F4F]">FREMONT COLLEGE OF EDUCATION</p>
+                    <p class="text-center font-lato text-[12px] font-regular text-[#4F4F4F]">
+                        No.5 Raymond Osuman Street, PMB 2191 <br />Maitama, Abuja, Nigeria.
+                    </p>
+                    <p class="text-center font-lato text-[24px] font-semibold text-[#4F4F4F]">
+                        Post Graduate Diploma in Education
+                    </p>
+                    <p class="text-center font-lato text-[12px] font-bold text-[#4F4F4F]">
+                        Student First Semester Statement Of Result
+                    </p>
+                </div>
+                <div *ngIf="profile_pictureUrl">
+                    <img [src]="profile_pictureUrl" alt="Student Profile Picture" class="w-32 h-32" />
+                </div>
+            </div>
+            <div class="flex justify-between items-center !mt-10">
+                <div class="text-[#000000] text-[12px]" *ngIf="fullName">
+                    <p>
+                        Name: <span>{{ fullName }}</span>
+                    </p>
+                    <p>Level: <span>{{ level }}</span></p>
+                </div>
+                <div class="text-[#000000] text-[12px]">
+                    <p>
+                        Reg. No.: <span>{{ reg_no }}</span>
+                    </p>
+                    <p>Session: <span>{{ session }}</span> </p>
+                </div>
+            </div>
+
+            <div *ngIf="studentResults && studentResults.length > 0" class="student-results">
+                <table class="table-auto w-full mt-4 ">
+                    <thead>
+                        <tr>
+                            <th class=" px-4 py-2">S/N</th>
+                            <th class=" px-4 py-2">Course Code</th>
+                            <th class=" px-4 py-2">Course Title</th>
+                            <th class=" px-4 py-2">Unit</th>
+                            <th class=" px-4 py-2">Grade</th>
+                            <th class=" px-4 py-2">Total Point</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let course of studentResults; let i = index">
+                            <td class=" px-4 py-2">{{ i + 1 }}</td>
+                            <td class=" px-4 py-2">{{ course?.coursecode }}</td>
+                            <td class=" px-4 py-2">{{ course?.title }}</td>
+                            <td class=" px-4 py-2">{{ course?.credit_unit }}</td>
+                            <td class=" px-4 py-2">{{ course?.grade }}</td>
+                            <td class=" px-4 py-2">{{ course?.total_point }}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div *ngIf="cumulativeResults" class="cumulative-results mt-10 mr-16">
+                <table class="table-auto w-full mt-4">
+                    <thead>
+                        <tr>
+                            <th class=" px-4 py-2">UNTS</th>
+                            <th class=" px-4 py-2">UNTD</th>
+                            <th class=" px-4 py-2">GPTS</th>
+                            <th class=" px-4 py-2">GPTD</th>
+                            <th class=" px-4 py-2">GPTATS</th>
+                            <th class=" px-4 py-2">GPTATD</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="px-4 py-2">{{ cumulativeResults.unts }}</td>
+                            <td class="px-4 py-2">{{ cumulativeResults.untd }}</td>
+                            <td class="px-4 py-2">{{ cumulativeResults.gpts }}</td>
+                            <td class="px-4 py-2">{{ cumulativeResults.gptd }}</td>
+                            <td class="px-4 py-2">{{ cumulativeResults.gpats }}</td>
+                            <td class="px-4 py-2">{{ cumulativeResults.gpatd }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-[#000000] text-[12px] mt-10 text-left">
+                <p>
+                    Remark: <span class="text-blue-500">{{ cumulativeResults.remarks }}</span>
+                </p>
+            </div>
+
+            <div class="text-[#000000] text-[12px] mt-[10rem]">
+                <div class="border-b border-[#000000] w-20"></div>
+                <p class="pt-3  text-left">Registrar</p>
+            </div>
+
+        </div>
+    </div>
+</div>

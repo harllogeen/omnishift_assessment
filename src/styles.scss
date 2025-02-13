@@ -1,1 +1,39 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {
+  @apply font-lato bg-[#f6f6f6];
+}
+
+/* Styling for table headers */
+.mat-header-cell {
+  font-weight: bold; /* Bold text */
+  padding: 12px 15px; /* Padding inside cells */
+  text-align: left; /* Align text to the left */
+}
+
+
+
+/* Styling for the paginator */
+.mat-paginator {
+  margin-top: 20px;
+  text-align: right;
+}
+
+/* Optional: Adding hover effect for rows */
+.mat-row:hover {
+  background-color: #f1f1f1; /* Light grey background on hover */
+}
+
+/* Optional: Styling the action buttons */
+button.mat-button {
+  background-color: #007bff; /* Button color */
+  color: #fff; /* Text color */
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
