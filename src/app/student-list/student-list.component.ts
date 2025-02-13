@@ -46,7 +46,7 @@ import { StudentResultComponent } from '../student-result/student-result.compone
   templateUrl: './student-list.component.html',
   styleUrls: ['./student-list.component.scss'],
 })
-export class StudentListComponent implements OnInit, AfterViewInit {
+export class StudentListComponent implements OnInit {
   title = 'Student Data Table';
   form: FormGroup;
   isLoading: boolean = false;
@@ -98,13 +98,7 @@ export class StudentListComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit(): void {
-    if (!this.studentResultComponent) {
-      console.error('Child component not initialized.');
-    } else {
-      console.log('Child component initialized.');
-    }
-  }
+ 
   ngOnInit(): void {
     this.fetchStudentData();
   }
