@@ -98,7 +98,6 @@ export class StudentListComponent implements OnInit {
     });
   }
 
- 
   ngOnInit(): void {
     this.fetchStudentData();
   }
@@ -106,14 +105,32 @@ export class StudentListComponent implements OnInit {
   // This method will be used to apply filters dynamically
   applyFilter() {
     const filters = this.form.value;
-    this.filteredData = this.studentData.filter((student) =>
-      Object.keys(filters).every((key) => {
-        const value = filters[key];
-        return value
-          ? String(student[key]).toLowerCase() === String(value).toLowerCase()
-          : true;
+    this.isLoading = true; // Show loading indicator
+
+    this.http
+      .post<any>('https://test.omniswift.com.ng/api/filterData', filters, {
+        headers: { Accept: 'application/json' },
       })
-    );
+      .subscribe(
+        (response) => {
+          if (
+            response &&
+            response.data &&
+            Array.isArray(response.data.students)
+          ) {
+            this.filteredData = response.data.students; // Store filtered data
+            this.dataSource.data = this.filteredData; // Update table data
+          } else {
+            this.filteredData = [];
+            this.dataSource.data = []; // Clear table data if no students returned
+          }
+          this.isLoading = false; // Hide loading indicator
+        },
+        (error) => {
+          console.error('Error fetching filtered data:', error);
+          this.isLoading = false;
+        }
+      );
   }
 
   fetchStates() {
