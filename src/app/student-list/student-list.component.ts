@@ -1,10 +1,8 @@
 import {
-  AfterViewInit,
   ChangeDetectorRef,
   Component,
   ComponentFactoryResolver,
   ComponentRef,
-  ElementRef,
   OnInit,
   ViewChild,
   ViewContainerRef,
@@ -24,8 +22,6 @@ import { HttpClient } from '@angular/common/http';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator'; // Optional for pagination
 import { MatSortModule } from '@angular/material/sort'; // Optional for sorting
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
 import { StudentResultComponent } from '../student-result/student-result.component';
 
 @Component({
@@ -41,7 +37,7 @@ import { StudentResultComponent } from '../student-result/student-result.compone
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    FormsModule, // <-- Add FormsModule here
+    FormsModule,
   ],
   templateUrl: './student-list.component.html',
   styleUrls: ['./student-list.component.scss'],
@@ -52,7 +48,7 @@ export class StudentListComponent implements OnInit {
   isLoading: boolean = false;
   showStudentResult: boolean = true;
 
-  states: any[] = []; // Store fetched states
+  states: any[] = []; 
   ages: any[] = [];
   levels: any[] = [];
   genders: any[] = [];
@@ -70,11 +66,11 @@ export class StudentListComponent implements OnInit {
     'action',
   ];
 
-  pageIndex: number = 0; // Current page index
-  pageSize: number = 10; // Number of items per page
-  selectedStudent: any; // Store the selected student
+  pageIndex: number = 0; 
+  pageSize: number = 10; 
+  selectedStudent: any;
 
-  dataSource = new MatTableDataSource<any>(); // Initialize as MatTableDataSource
+  dataSource = new MatTableDataSource<any>(); 
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild('studentResultContainer', { read: ViewContainerRef })
@@ -105,8 +101,7 @@ export class StudentListComponent implements OnInit {
   // This method will be used to apply filters dynamically
   applyFilter() {
     const filters = this.form.value;
-    this.isLoading = true; // Show loading indicator
-
+    this.isLoading = true; 
     this.http
       .post<any>('https://test.omniswift.com.ng/api/filterData', filters, {
         headers: { Accept: 'application/json' },
@@ -124,7 +119,7 @@ export class StudentListComponent implements OnInit {
             this.filteredData = [];
             this.dataSource.data = []; // Clear table data if no students returned
           }
-          this.isLoading = false; // Hide loading indicator
+          this.isLoading = false; 
         },
         (error) => {
           console.error('Error fetching filtered data:', error);
@@ -232,9 +227,6 @@ export class StudentListComponent implements OnInit {
       });
   }
 
-  // selectStudent(student: any) {
-  //   this.selectedStudent = student;
-  // }
 
   async downloadStudentResult(student: any) {
     // Clear previous instance
@@ -255,6 +247,6 @@ export class StudentListComponent implements OnInit {
 
       // Destroy component after download
       setTimeout(() => this.componentRef.destroy(), 100);
-    }, 500);
+    }, 200);
   }
 }
